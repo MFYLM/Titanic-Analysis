@@ -2,6 +2,7 @@ import preprocessing
 import numpy as np
 import pandas as pd
 import sklearn
+from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import plot_confusion_matrix
 from sklearn.metrics import classification_report
@@ -25,6 +26,21 @@ def logRegression(X, Y):
     model.fit(trainX_scaled,Y)
 
     return model
+
+
+def neuralNetwork(X, Y, size=(6, 2)):
+    sc = StandardScaler()
+    scaler = sc.fit(X)
+    trainX_scaled = scaler.transform(X)
+
+    MLP = MLPClassifier(hidden_layer_sizes=size, max_iter=2000, activation="relu", solver="adam")     # increasing layer to three could lead to overfitting
+    MLP.fit(trainX_scaled, Y)
+
+    return MLP
+
+
+
+
 if __name__ == "__main__":
     extracted = preprocessing.column_selection("data/train.csv")
     X = extracted.drop(columns="Survived", axis=1)
