@@ -38,6 +38,11 @@ def neuralNetwork(X, Y, size=(6, 2)):
 
     return MLP
 
+def randforestclassf(X, Y, est_num=50):
+    rf = RandomForestClassifier(n_estimators=est_num, criterion="entropy")
+    rf.fit(X, Y)
+
+    return rf
 
 
 
