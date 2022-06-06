@@ -13,6 +13,7 @@ from sklearn import metrics
 from sklearn.model_selection import learning_curve
 from sklearn.preprocessing import PolynomialFeatures
 import matplotlib.pyplot as plt
+from sklearn.ensemble import RandomForestClassifier
 
 def logRegression(X, Y):
     pol = PolynomialFeatures(2) # Added 
